@@ -106,6 +106,8 @@ O projeto está organizado da seguinte forma:
 - models: Contém as classes de modelo mapeadas para as tabelas do banco de dados.
 - repositories: Contém as interfaces dos repositórios que acessam as tabelas do banco de dados.
 - services: Contém as classes de serviço responsáveis pela lógica de negócio.
+- utils: Contém classes utilitárias.
+- dto: Contém os Data Transfer Objects.
 - tasks: Contém os componentes de tarefa que executam as etapas dos Jobs.
   - readers: Contém os leitores de dados.
   - processors: Contém os processadores de dados.
@@ -114,9 +116,3 @@ O projeto está organizado da seguinte forma:
   - flows: Contém os flows dos Jobs.
   - steps: Contém os steps dos Jobs.
   - tasklets: Contém os tasklets dos Jobs.
-
-## Personalização
-Você pode personalizar os Jobs conforme as suas necessidades. Por exemplo, pode adicionar novas regras de negócio ao criar usuários ou ao enviar notificações.
-
-## Contribuição
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e enviar pull requests.

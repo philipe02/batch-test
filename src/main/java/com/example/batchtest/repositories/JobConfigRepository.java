@@ -1,4 +1,9 @@
 package com.example.batchtest.repositories;
 
-public interface JobConfigRepository {
+import com.example.batchtest.models.JobConfigEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface JobConfigRepository extends JpaRepository<JobConfigEntity, Integer> {
 }
