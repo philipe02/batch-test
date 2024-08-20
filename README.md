@@ -21,6 +21,69 @@ notificações que estão registradas na tabela `notifications_to_send`.
 
 Os Jobs são configurados para serem executados em paralelo, aproveitando o poder de processamento de múltiplos threads.
 
+## Sumário
+
+- [Configuração e Execução](#configuração-e-execução)
+  - [Requisitos](#requisitos)
+  - [Passos para executar o projeto](#passos-para-executar-o-projeto)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Estrutura do Banco de Dados](#estrutura-do-banco-de-dados)
+
+## Configuração e Execução
+
+### Requisitos
+
+- JDK 17 ou superior
+- Maven 3.6+
+- Docker
+- Banco de dados PostgreSQL
+
+### Passos para executar o projeto
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/seu-usuario/spring-batch-parallel-jobs.git
+cd spring-batch-parallel-jobs
+```
+
+2. Configure o banco de dados:
+
+Suba o banco de dados utilizando o docker. Execute o comando abaixo para subir o banco de dados PostgreSQL:
+
+```bash
+docker-compose up -d
+```
+
+3. Execute a aplicação:
+
+```bash
+mvn spring-boot:run
+```
+
+4. Monitorando os Jobs:
+
+Os Jobs são configurados para serem executados automaticamente. Você pode monitorar a execução dos Jobs através dos logs gerados pela aplicação.
+
+## Estrutura do Projeto
+
+O projeto está organizado da seguinte forma:
+
+- config: Contém as configurações dos Jobs e do Spring Batch.
+- jobs: Contém as definições dos Jobs CreateUsersJob e SendNotificationsJob.
+- models: Contém as classes de modelo mapeadas para as tabelas do banco de dados.
+- repositories: Contém as interfaces dos repositórios que acessam as tabelas do banco de dados.
+- services: Contém as classes de serviço responsáveis pela lógica de negócio.
+- utils: Contém classes utilitárias.
+- dto: Contém os Data Transfer Objects.
+- tasks: Contém os componentes de tarefa que executam as etapas dos Jobs.
+  - readers: Contém os leitores de dados.
+  - processors: Contém os processadores de dados.
+  - writers: Contém os escritores de dados.
+  - listeners: Contém os listeners dos Jobs.
+  - flows: Contém os flows dos Jobs.
+  - steps: Contém os steps dos Jobs.
+  - tasklets: Contém os tasklets dos Jobs.
+
 ## Estrutura do Banco de Dados
 
 As tabelas utilizadas pela aplicação são:
@@ -67,52 +130,3 @@ As tabelas utilizadas pela aplicação são:
   - `id`: Identificador único.
   - `job_name`: Nome do Job.
   - `enabled`: Indica se o Job está habilitado (0 - Não, 1 - Sim).
-
-## Configuração e Execução
-
-### Requisitos
-- JDK 17 ou superior
-- Maven 3.6+
-- Banco de dados MySQL e H2 para testes
-
-### Passos para executar o projeto
-
-1. Clone o repositório:
-```bash
-git clone https://github.com/seu-usuario/spring-batch-parallel-jobs.git
-cd spring-batch-parallel-jobs
-```
-
-2. Configure o banco de dados:
-
-- Atualize o arquivo application.properties com as configurações do seu banco de dados.
-
-3. Execute a aplicação:
-
-```bash
-mvn spring-boot:run
-```
-
-4. Monitorando os Jobs:
-
-Os Jobs são configurados para serem executados automaticamente. Você pode monitorar a execução dos Jobs através dos logs gerados pela aplicação.
-
-## Estrutura do Projeto
-
-O projeto está organizado da seguinte forma:
-
-- config: Contém as configurações dos Jobs e do Spring Batch.
-- jobs: Contém as definições dos Jobs CreateUsersJob e SendNotificationsJob.
-- models: Contém as classes de modelo mapeadas para as tabelas do banco de dados.
-- repositories: Contém as interfaces dos repositórios que acessam as tabelas do banco de dados.
-- services: Contém as classes de serviço responsáveis pela lógica de negócio.
-- utils: Contém classes utilitárias.
-- dto: Contém os Data Transfer Objects.
-- tasks: Contém os componentes de tarefa que executam as etapas dos Jobs.
-  - readers: Contém os leitores de dados.
-  - processors: Contém os processadores de dados.
-  - writers: Contém os escritores de dados.
-  - listeners: Contém os listeners dos Jobs.
-  - flows: Contém os flows dos Jobs.
-  - steps: Contém os steps dos Jobs.
-  - tasklets: Contém os tasklets dos Jobs.
